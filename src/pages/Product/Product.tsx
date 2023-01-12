@@ -16,11 +16,15 @@ import BalanceIcon from "@mui/icons-material/Balance";
 
 
 
-
 const Product = () => {
 
+  const id = useParams().id;
+
+  console.log(id)
+
   const [quantity, setQuantity] = useState(1)
-  const { data, status } = useQuery("featured", getProduct)
+
+  const { data, status } = useQuery([id], getProduct)
 
   if (status === "loading") {
     return <div>Loading...</div>
@@ -28,64 +32,72 @@ const Product = () => {
   if (status === "error") {
     return <div>Error...</div>
   }
-  return (
-    <div>
+  if (data) {
+    return (
+      <div>
 
-      <div className="List">
-        <div className="product">
+        <div className="List">
+          <div className="product">
 
-          <div className="left">
-            <div className="images">
-              <img src={data.image} alt="" />
-              <img src={data.image} alt="" />
-            </div>
-            <div className="mainImg">
-              <img src={data.image} alt="" />
-            </div>
-          </div>
-          <div className="right">
-            <h1>{data.title}</h1>
-            <span className='price'>{data.price}</span>
-            <p>{data.description}</p>
-            <div className="quantity">
-              <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}>-</button>
-              {quantity}
-              <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
-            </div>
-            <button className="add">
-              <AddShoppingCartIcon /> Aggiungi al carrello
-
-            </button>
-            <div className="link">
-              <div className="item">
-                <FavoriteBorderIcon /> lista desideri
+            <div className="left">
+              <div className="images">
+                <img src={data.image} alt="" />
+                <img src={data.image} alt="" />
               </div>
-              <div className="item">
-                <BalanceIcon /> Compara
+              <div className="mainImg">
+                <img src={data.image} alt="" />
               </div>
             </div>
-            <div className="info">
-              <span>Vendor: Polo</span>
-              <span>Product Type: T-Shirt</span>
-              <span>Tag: T-Shirt, Women, Top</span>
-            </div>
-            <hr />
-            <div className="info">
-              <span>DESCRIPTION</span>
+            <div className="right">
+              <h1>{data.title}</h1>
+              <span className='price'>{data.price}</span>
               <p>{data.description}</p>
+              <div className="quantity">
+                <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}>-</button>
+                {quantity}
+                <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
+              </div>
+              <button className="add">
+                <AddShoppingCartIcon /> Aggiungi al carrello
 
+              </button>
+              <div className="link">
+                <div className="item">
+                  <FavoriteBorderIcon /> lista desideri
+                </div>
+                <div className="item">
+                  <BalanceIcon /> Compara
+                </div>
+              </div>
+              <div className="info">
+                <span>Vendor: Polo</span>
+                <span>Product Type: T-Shirt</span>
+                <span>Tag: T-Shirt, Women, Top</span>
+              </div>
               <hr />
-              <span>Brand</span>
-              <p>{data.brand}</p>
+              <div className="info">
+                <span>DESCRIPTION</span>
+                <p>{data.description}</p>
+
+                <hr />
+                <span>Brand</span>
+
+
+              </div>
 
             </div>
-
           </div>
         </div>
-      </div>
 
-    </div>
-  );
+      </div>
+    );
+
+  }return(
+    <p>errore</p>
+
+
+  )
+
 }
 
 export default Product
