@@ -4,7 +4,7 @@ import { useState } from 'react';
 import "./product.scss";
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { getProduct, Prodotto } from '../../api/Api';
+import { getProduct, Product } from '../../api/Api';
 
 
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -18,13 +18,19 @@ import BalanceIcon from "@mui/icons-material/Balance";
 
 const Product = () => {
 
-  const id = useParams().id;
+  const id = Number(useParams().id);
 
   console.log(id)
 
   const [quantity, setQuantity] = useState(1)
 
-  const { data, status } = useQuery([id], getProduct)
+  const { data, status } = useQuery(['Product',id], ()=> getProduct(id))
+
+  /*function Todos({ id }) {
+    const result = useQuery(['Prodotto', id], () => getProduct(id))
+  }*/
+
+  
 
   if (status === "loading") {
     return <div>Loading...</div>
@@ -92,7 +98,7 @@ const Product = () => {
       </div>
     );
 
-  }return(
+  } return (
     <p>errore</p>
 
 

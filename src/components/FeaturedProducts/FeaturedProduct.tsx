@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { getFeatured, Prodotto } from '../../api/Api';
+import { getFeatured, Product } from '../../api/Api';
 
 import Card from "../Card/Card";
 
@@ -32,7 +32,7 @@ const FeaturedProduct = () => {
         </p>
       </div>
       <div className="bottom">
-        {data?.map((item: Prodotto) => (
+        {data?.map((item: Product) => (
           <li>
             <Card item={item} key={item.id} />
           </li>

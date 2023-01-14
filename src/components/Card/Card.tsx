@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Prodotto } from '../../api/Api';
+import { Product } from '../../api/Api';
 
 
 
@@ -8,7 +8,7 @@ import "./Card.scss";
 
 
 interface CardProps {
-  item: Prodotto;
+  item: Product;
 }
 
 const Card: React.FC<CardProps> = ({ item }) => {

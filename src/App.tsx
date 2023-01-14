@@ -8,6 +8,7 @@ import Products from "./pages/Products/Products";
 
 
 import './App.css';
+import ProductEdit from './pages/ProductEdit/ProductEdit';
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <Product />,
+      },
+      {
+        path: "/product/:id/edit",
+        element: <ProductEdit />,
       },
     ],
   },
