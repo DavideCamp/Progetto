@@ -1,0 +1,81 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 100%;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  width: 30%;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.buttonsuccess {
+  background-color: gray;
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+.link {
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .form {
+    width: 90%;
+  }
+  .input {
+    font-size: 0.8rem;
+  }
+  .button {
+    width: auto;
+    font-size: 0.8rem;
+  }
+  fieldset {
+    width: 90%;
+  }
+}
+fieldset {
+  border: 0px;
+  border-radius: 5px;
+  padding: 0;
+  width: 80%;
+  margin: 1rem auto;
+}
+
+select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 100%;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+

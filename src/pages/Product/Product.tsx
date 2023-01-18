@@ -16,29 +16,22 @@ import BalanceIcon from "@mui/icons-material/Balance";
 
 
 
-const Product = () => {
+const ProductPage = () => {
 
   const id = Number(useParams().id);
+  const [quantity, setQuantity] = useState(1);
+  const { data, status } = useQuery(['Product', id], () => getProduct(id));
 
-  console.log(id)
-
-  const [quantity, setQuantity] = useState(1)
-
-  const { data, status } = useQuery(['Product',id], ()=> getProduct(id))
-
-  /*function Todos({ id }) {
-    const result = useQuery(['Prodotto', id], () => getProduct(id))
-  }*/
-
-  
 
   if (status === "loading") {
-    return <div>Loading...</div>
+    return <div className='loader'></div>
   }
   if (status === "error") {
     return <div>Error...</div>
   }
   if (data) {
+    console.log(data);
+
     return (
       <div>
 
@@ -106,4 +99,4 @@ const Product = () => {
 
 }
 
-export default Product
+export default ProductPage

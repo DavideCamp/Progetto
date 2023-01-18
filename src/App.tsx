@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 
 import Home from "./pages/Home/Home";
-import Product from "./pages/Product/Product";
+import ProductPage from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
 
 
@@ -41,11 +41,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <Product />,
+        element: <ProductPage />,
       },
       {
         path: "/product/:id/edit",
         element: <ProductEdit />,
+        
       },
     ],
   },
